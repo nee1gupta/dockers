@@ -1,4 +1,13 @@
-FROM ubuntu:latest
+FROM centos:7
+RUN yum  update -y && \
+    yum install perl -y && \
+    yum install gcc -y && \
+    yum install make -y && \
+    yum install gcc-c++ -y \
+    yum install openssh-clients -y \
+    yum install openssl-devel -y \
+    yum install glibc-devel -y \
+    yum install libssl-dev -y \
+    yum install net-tools -y \
+    yum install wget -y
 
-# overwrite this with 'CMD []' in a dependent Dockerfile
-CMD echo "Maintained by Chetan.Dua@gmail.com" && /bin/bash
