@@ -19,7 +19,8 @@ RUN cd /tmp && tar -xvzf jdk-7-linux-x64.tar.gz -C /usr && rm /tmp/jdk-7-linux-x
 ENV JAVA_HOME /usr/jdk1.7.0
 
 COPY packages/cxf-3.1.15.tar.gz /tmp/cxf-3.1.15.tar.gz
-RUN cd /tmp && tar -xvzf cxf-3.1.15.tar.gz && rm -rf cxf-3.1.15.tar.gz
+RUN tar -xvzf /tmp/cxf-3.1.15.tar.gz -C /opt/ && rm -rf /tmp/cxf-3.1.15.tar.gz
+ENV CXF_HOME /opt/cxf-cxf-3.1.15
 
 COPY packages/axis2-1.6.2-bin.zip /tmp/axis2-1.6.2-bin.zip
 RUN cd /tmp && unzip axis2-1.6.2-bin.zip && rm axis2-1.6.2-bin.zip
