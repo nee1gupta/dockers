@@ -1,13 +1,19 @@
 FROM centos:7
-RUN yum -y update && \
-    yum -y install perl && \
-    yum -y install gcc && \
-    yum -y install make && \
-    yum -y install wget && \
-    yum -y install ant && \
-    yum -y install zip && \
-    yum -y install unzip && \
-    yum -y install glibc.i686
+ RUN yum  update -y && \
+    yum install perl -y && \
+    yum install gcc -y && \
+    yum install make -y && \
+    yum install gcc-c++ -y \
+    yum install openssh-clients -y \
+    yum install openssl-devel -y \
+    yum install glibc-devel -y \
+    yum install libssl-dev -y \
+    yum install net-tools -y \
+    yum install wget -y
+    yum install ant -y && \
+    yum install zip -y && \
+    yum install unzip -y && \
+    yum install glibc.i686 -y
 
 COPY packages/jdk-7-linux-x64.tar.gz /tmp/jdk-7-linux-x64.tar.gz
 RUN cd /tmp && tar -xvzf jdk-7-linux-x64.tar.gz -C /usr && rm /tmp/jdk-7-linux-x64.tar.gz
