@@ -3,13 +3,13 @@ FROM centos:7
     yum install perl -y && \
     yum install gcc -y && \
     yum install make -y && \
-    yum install gcc-c++ -y \
-    yum install openssh-clients -y \
-    yum install openssl-devel -y \
-    yum install glibc-devel -y \
-    yum install libssl-dev -y \
-    yum install net-tools -y \
-    yum install wget -y
+    yum install gcc-c++ -y && \
+    yum install openssh-clients -y && \
+    yum install openssl-devel -y && \
+    yum install glibc-devel -y && \
+    yum install libssl-dev -y && \
+    yum install net-tools -y && \
+    yum install wget -y && \
     yum install ant -y && \
     yum install zip -y && \
     yum install unzip -y && \
