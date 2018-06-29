@@ -22,5 +22,5 @@ COPY packages/cxf-3.1.15.tar.gz /tmp/cxf-3.1.15.tar.gz
 RUN tar -xvzf /tmp/cxf-3.1.15.tar.gz -C /opt/ && rm -rf /tmp/cxf-3.1.15.tar.gz
 ENV CXF_HOME /opt/cxf-cxf-3.1.15
 
-COPY packages/axis2-1.6.2-bin.zip /tmp/axis2-1.6.2-bin.zip
-RUN cd /tmp && unzip axis2-1.6.2-bin.zip && rm axis2-1.6.2-bin.zip
+COPY packages/axis2-1.6.2-bin.zip /opt/axis2-1.6.2-bin.zip
+RUN cd /opt && unzip axis2-1.6.2-bin.zip && rm axis2-1.6.2-bin.zip
