@@ -1,0 +1,6 @@
+FROM centos:6
+RUN yum  update -y && \
+    yum install perl -y && \
+    yum install gcc -y && \
+    yum install make -y && \
+    yum install gcc-c++ -y
