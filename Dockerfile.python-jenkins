@@ -1,3 +1,25 @@
 FROM python:2.7.14-alpine3.7
 RUN apk add --no-cache curl
 RUN pip install python-jenkins==0.4.16
+
+ENV JENKINSURL $JENKINSURL
+ENV USERNAME $USERNAME 
+ENV PASSWORD $PASSWORD
+ENV MASTERJOBNAME $MASTERJOBNAME
+ENV MASTERJOBNUMBER $MASTERJOBNUMBER
+ENV PARAMSFORPRINT ${PARAMSFORPRINT:-BRANCH_NAME}
+ENV STATUSFILE ${STATUSFILE:-status.txt}
+
+COPY scripts/python-jenkins/jenkins-notify-tree.py /
+
+VOLUME /python-jenkins
+WORKDIR /python-jenkins
+
+CMD python /jenkins-notify-tree.py \
+	--jenkinsurl $JENKINSURL \
+	--username $USERNAME \
+	--password $PASSWORD \
+	--masterjobname $MASTERJOBNAME \
+	--masterjobnumber $MASTERJOBNUMBER \
+	--paramsforprint $PARAMSFORPRINT \
+    && echo SUCCESS > $STATUSFILE || echo FAILURE > $STATUSFILE
