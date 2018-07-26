@@ -7,5 +7,5 @@ RUN cd /tmp && \
    rm -rf UnlimitedJCEPolicy* jce_policy-8.zip
 
 COPY packages/axis2-1.5.4-war.zip /tmp/
-RUN unzip /tmp/axis2-1.5.4-war.zip -d $CATALINA_HOME/webapps/axis2-1.5.4 && \
+RUN unzip /tmp/axis2-1.5.4-war.zip -d $CATALINA_HOME/webapps && \
     rm -rf /tmp/axis2-1.5.4-war.zip
