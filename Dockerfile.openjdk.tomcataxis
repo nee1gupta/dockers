@@ -2,7 +2,7 @@ FROM ubuntu:trusty
 
 RUN apt-get update && apt-get install zip -y && apt-get install wget -y && apt-get install curl -y && apt-get install ant -y && apt-get install openjdk-7-jdk -y
 
-RUN wget http://mirrors.koehn.com/apache/tomcat/tomcat-8/v8.5.23/bin/apache-tomcat-8.5.23.tar.gz && \
+RUN wget http://mirrors.koehn.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz && \
     tar xvzf apache-tomcat-8.5.23.tar.gz && \
     mv apache-tomcat-8.5.23 /opt/tomcat 
 
