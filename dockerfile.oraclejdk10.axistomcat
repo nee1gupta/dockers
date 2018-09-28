@@ -1,0 +1,16 @@
+FROM openjdk:10
+RUN apt-get update && apt-get install zip -y && apt-get install wget -y && apt-get install curl -y && apt-get install ant -y
+RUN apt-get update && cd /tmp && \
+   curl -LO "http://download.oracle.com/otn-pub/java/jce/10/UnlimitedJCEPolicyJDK10.zip" -H 'Cookie: oraclelicense=accept-securebackup-cookie' && \
+   unzip UnlimitedJCEPolicyJDK10.zip && \
+   cp -v UnlimitedJCEPolicy/*.jar /usr/lib/jvm/java-1.10.0-openjdk-amd64/jre/lib/security && \
+   rm -rf UnlimitedJCEPolicyJDK10.zip
+RUN wget http://mirrors.koehn.com/apache/tomcat/tomcat-9/v9.0.12/bin/apache-tomcat-9.0.12.tar.gz && \
+    tar xvzf apache-tomcat-9.0.12.tar.gz && \
+    mv apache-tomcat-9.0.12 /opt/tomcat 
+
+ENV CATALINA_HOME /opt/tomcat
+
+COPY packages/axis2-1.5.4-war.zip /tmp/
+RUN unzip /tmp/axis2-1.5.4-war.zip -d $CATALINA_HOME/webapps && \
+    rm -rf /tmp/axis2-1.5.4-war.zip
