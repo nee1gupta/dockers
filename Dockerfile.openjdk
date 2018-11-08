@@ -6,3 +6,16 @@ RUN apt-get update && cd /tmp && \
    unzip UnlimitedJCEPolicyJDK7.zip && \
    cp -v UnlimitedJCEPolicy/*.jar /usr/lib/jvm/java-1.7.0-openjdk-amd64/jre/lib/security && \
    rm -rf UnlimitedJCEPolicyJDK7.zip
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:webupd8team/java
+RUN apt-get update
+
+# JAVA 8
+############
+# Auto-accept the Oracle JDK license
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections; \
+    apt-get install -y oracle-java8-installer
+
+RUN wget  --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip; \
+	unzip jce_policy-8.zip; \ 
+	mv -f UnlimitedJCEPolicyJDK8/*.jar /usr/lib/jvm/java-8-oracle/jre/lib/security/.
